@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le produit{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+<div>{% if product.promo == true %}<span class="badge badge-primary">Promo</span>{% endif %}</div>
+
+    <a class="btn btn-primary" href="{{ path('product.visible')}}" role="button">Retour aux produits</a>
+    <div class="card mb-3">
+  <img src="{{product.image}}" class="card-img-top" alt="img">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text"><small class="text-muted">{{product.priceHT}} €</small></p>
+    <p class="card-text">{{product.description}}</p>
+    
+  </div>
+</div>
+</div>
+
+
+{% endblock %}
