@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -22,7 +23,7 @@ class AppFixtures extends Fixture
     {
         $faker = Faker\Factory::create();
 
-        
+        // PRODUCT
         for($i=0;$i<25;$i++){
             $product = new Product();
             $product
@@ -36,15 +37,27 @@ class AppFixtures extends Fixture
             $manager->persist($product);
         }
 
+        //USER
         $user = new User();
         $user
             ->setEmail('admin@toor.com')
             ->setRoles(User::USER_ROLE[1])
-            ->setPassword($this->encoder->encodePassword(
+           ->setPassword($this->encoder->encodePassword(
                 $user,'toor'
-            ));
+             ));
 
         $manager->persist($user);
+
+        //CATEGORY
+        foreach(Category::CATPROD as $i){
+            $category = new Category();
+            $category
+                ->setName($i)
+                ->setColor($faker->hexcolor())
+                ->setDisplay(1);
+            $manager->persist($category);
+        }
+        
 
         $manager->flush();
     }
