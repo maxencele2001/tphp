@@ -17,6 +17,7 @@
                 <tr>
                     <td>{{category.name}}</td>
                     <td>{{category.color}}</td>
+                    <td><a class="btn btn-primary" href="{{ path('category.show', {id: category.id}) }}" role="button">En savoir plus</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

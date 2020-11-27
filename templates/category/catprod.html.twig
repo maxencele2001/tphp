@@ -5,7 +5,25 @@
 {% block body %}
 
 
-{{ dump(products) }}
+<div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td>{{product.priceHT}}</td>
+                    <td><a class="btn btn-primary" href="{{ path('product.show', {id: product.id}) }}" role="button">En savoir plus</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 
 {% endblock %}
