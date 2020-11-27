@@ -16,6 +16,7 @@
                             <p class="card-text"><small class="text-muted">{{ product.created_at | date('d / m / y') }}</small></p>
                             {% if product.promo == true %}<span class="badge badge-primary">Promo</span>{% endif %}
                             <a class="btn btn-primary" href="{{ path('product.show', {id: product.id}) }}" role="button">En savoir plus</a>
+                            <a class="btn btn-success" href="{{ path('cart.add', {id: product.id}) }}" role="button">Ajouter au panier</a>
                     </div>
                 </div>
         </div>
