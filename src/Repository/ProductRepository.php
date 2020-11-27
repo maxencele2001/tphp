@@ -49,6 +49,15 @@ class ProductRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getByID(int $id)
+    {
+        return $this->findVisibleDisplay()
+            ->andWhere('p.category = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
